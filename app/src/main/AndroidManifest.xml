@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.kyungeun.customrecyclerview">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
@@ -15,10 +17,10 @@
         android:theme="@style/Theme.CustomRecyclerview"
         tools:targetApi="31">
         <activity
-            android:name=".banner.BannerActivity"
+            android:name="com.kyungeun.customrecyclerview.ui.banner.BannerActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

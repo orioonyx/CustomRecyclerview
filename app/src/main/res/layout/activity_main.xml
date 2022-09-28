@@ -5,7 +5,7 @@
     <data>
         <variable
             name="activity"
-            type="com.kyungeun.customrecyclerview.MainActivity"/>
+            type="com.kyungeun.customrecyclerview.ui.main.MainActivity"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:text="banner"
         android:layout_margin="20dp"
-        android:onClick="@{() -> activity.moveBannerActivity()}"
+        android:onClick="@{() -> activity.onBannerClick()}"
         app:layout_constraintTop_toTopOf="parent"
         />
 
