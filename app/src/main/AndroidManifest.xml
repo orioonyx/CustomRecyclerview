@@ -3,8 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.kyungeun.customrecyclerview">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
