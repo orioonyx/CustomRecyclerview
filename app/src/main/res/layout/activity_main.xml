@@ -3,22 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="activity"
-            type="com.kyungeun.customrecyclerview.ui.main.MainActivity"/>
+            type="com.kyungeun.customrecyclerview.ui.main.MainActivity" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="banner"
-        android:layout_margin="20dp"
-        android:onClick="@{() -> activity.onBannerClick()}"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recyclerview Custom"
+            android:textSize="20sp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="@{() -> activity.onBannerClick()}"
+            android:text="Center Zoom and Sensitive Swipe"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="@{() -> activity.onBannerClick()}"
+            android:text="Scroll Custom"
+            android:textAllCaps="false" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </layout>

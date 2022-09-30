@@ -35,7 +35,7 @@ class BannerActivity : AppCompatActivity(), BannerAdapter.BannerItemListener {
 
         //center snap
         val snapHelper = GravitySnapHelper(Gravity.CENTER)
-        snapHelper.scrollMsPerInch = 30f //스크롤 속도 설정 (작을수록 빠름)
+        snapHelper.scrollMsPerInch = 25f //scroll speed
         snapHelper.attachToRecyclerView(binding.recyclerviewBanner)
 
     }

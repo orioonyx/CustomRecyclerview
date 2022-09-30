@@ -14,7 +14,10 @@ class BannerRepository @Inject constructor() {
         data.add(Banner(1, R.drawable.demo2))
         data.add(Banner(2, R.drawable.demo3))
         data.add(Banner(3, R.drawable.demo4))
-
+        data.add(Banner(4, R.drawable.demo5))
+        data.add(Banner(5, R.drawable.demo6))
+        data.add(Banner(6, R.drawable.demo7))
+        data.add(Banner(7, R.drawable.demo8))
         return MutableLiveData(data)
     }
 }
