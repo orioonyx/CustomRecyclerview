@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import com.kyungeun.customrecyclerview.R
 import com.kyungeun.customrecyclerview.databinding.ActivityMainBinding
 import com.kyungeun.customrecyclerview.ui.banner.BannerActivity
+import com.kyungeun.customrecyclerview.ui.home.HomeActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,8 +21,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onBannerClick() {
-        val mainIntent = Intent(this, BannerActivity::class.java)
-        mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        startActivity(mainIntent)
+        val intent = Intent(this, BannerActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+    }
+    fun onhomeClick() {
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
     }
 }
