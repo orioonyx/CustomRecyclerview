@@ -15,10 +15,10 @@
         android:theme="@style/Theme.CustomRecyclerview"
         tools:targetApi="31">
         <activity
-            android:name=".HomeActivity"
+            android:name=".ui.home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name="com.kyungeun.customrecyclerview.ui.banner.BannerActivity"
+            android:name=".ui.banner.BannerActivity"
             android:exported="false" />
         <activity
             android:name=".ui.main.MainActivity"
