@@ -1,10 +1,15 @@
 package com.kyungeun.customrecyclerview.data.entity
 
+data class ProductList (
+    var id: Int,
+    var type: Int,
+    var title: String,
+    var productArray: ArrayList<Product>
+)
+
 data class Product (
     var id: Int,
-    var type: String,
     var image: Int,
     var name: String,
-    var price: Int,
-    var isSoldOut: Boolean
+    var price: Int
 )

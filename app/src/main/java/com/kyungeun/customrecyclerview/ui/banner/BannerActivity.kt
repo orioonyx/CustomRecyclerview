@@ -49,6 +49,4 @@ class BannerActivity : AppCompatActivity(), BannerAdapter.BannerItemListener {
     override fun onClicked(id: Int) {
 
     }
-
-
 }

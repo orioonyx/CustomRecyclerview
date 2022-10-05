@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kyungeun.customrecyclerview.data.entity.Banner
-import com.kyungeun.customrecyclerview.databinding.ItemMainbannerBinding
+import com.kyungeun.customrecyclerview.databinding.ItemEventbannerBinding
 
-class MainBannerAdapter(private val listener: BannerItemListener) : RecyclerView.Adapter<MainBannerViewHolder>() {
+class EventBannerAdapter(private val listener: BannerItemListener) : RecyclerView.Adapter<EventBannerViewHolder>() {
 
     interface BannerItemListener {
-        fun onMainBannerClicked(id: Int)
+        fun onEventBannerClicked(id: Int)
     }
 
     private val items = ArrayList<Banner>()
@@ -23,17 +23,17 @@ class MainBannerAdapter(private val listener: BannerItemListener) : RecyclerView
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainBannerViewHolder {
-        val binding: ItemMainbannerBinding = ItemMainbannerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MainBannerViewHolder(binding, listener)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventBannerViewHolder {
+        val binding: ItemEventbannerBinding = ItemEventbannerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return EventBannerViewHolder(binding, listener)
     }
 
     override fun getItemCount(): Int = items.size
 
-    override fun onBindViewHolder(holder: MainBannerViewHolder, position: Int) = holder.bind(items[position])
+    override fun onBindViewHolder(holder: EventBannerViewHolder, position: Int) = holder.bind(items[position])
 }
 
-class MainBannerViewHolder(private val itemBinding: ItemMainbannerBinding, private val listener: MainBannerAdapter.BannerItemListener) : RecyclerView.ViewHolder(itemBinding.root),
+class EventBannerViewHolder(private val itemBinding: ItemEventbannerBinding, private val listener: EventBannerAdapter.BannerItemListener) : RecyclerView.ViewHolder(itemBinding.root),
     View.OnClickListener {
 
     private lateinit var banner: Banner
@@ -54,7 +54,7 @@ class MainBannerViewHolder(private val itemBinding: ItemMainbannerBinding, priva
     }
 
     override fun onClick(v: View?) {
-        listener.onMainBannerClicked(banner.id)
+        listener.onEventBannerClicked(banner.id)
     }
 }
 
