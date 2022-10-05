@@ -11,5 +11,5 @@ data class Product (
     var id: Int,
     var image: Int,
     var name: String,
-    var price: Int
+    var price: Double
 )

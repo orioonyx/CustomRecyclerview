@@ -21,9 +21,9 @@ class ProductAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     interface OnItemClickListener {
     }
 
-    fun setOnItemClickListener(listener: ProductAdapter.OnItemClickListener) {
-        mListener = listener
-    }
+//    fun setOnItemClickListener(listener: ProductAdapter.OnItemClickListener) {
+//        mListener = listener
+//    }
 
     //컨텐츠 뷰타입
     private val VIEW_TYPE_SMALL = 1
@@ -54,7 +54,7 @@ class ProductAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         context = parent.context
-        return when (viewType) {
+        when (viewType) {
             1 -> {
                 val binding: ItemProductSmallTypeBinding = ItemProductSmallTypeBinding.inflate(
                     LayoutInflater.from(parent.context),
@@ -117,7 +117,7 @@ class ProductAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
             val recyclerview = itemBinding.recyclerviewProductSmall
             recyclerview.layoutManager =
-                GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
+                GridLayoutManager(context, 2, GridLayoutManager.HORIZONTAL, false)
             val adapter = ProductSmallAdapter()
             recyclerview.adapter = adapter
             adapter.setItems(products.productArray)
@@ -145,7 +145,7 @@ class ProductAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
             val recyclerview = itemBinding.recyclerviewProductMedium
             recyclerview.layoutManager =
-                GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             val adapter = ProductMediumAdapter()
             recyclerview.adapter = adapter
             adapter.setItems(products.productArray)

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kyungeun.customrecyclerview.data.entity.Product
 import com.kyungeun.customrecyclerview.databinding.ItemProductDetailBinding
+import com.kyungeun.customrecyclerview.databinding.ItemProductSmallBinding
 
 class ProductSmallAdapter() : RecyclerView.Adapter<ProductSmallViewHolder>() {
 
@@ -30,7 +31,7 @@ class ProductSmallAdapter() : RecyclerView.Adapter<ProductSmallViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductSmallViewHolder {
-        val binding: ItemProductDetailBinding = ItemProductDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding: ItemProductSmallBinding = ItemProductSmallBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ProductSmallViewHolder(binding, mListener)
     }
 
@@ -39,7 +40,7 @@ class ProductSmallAdapter() : RecyclerView.Adapter<ProductSmallViewHolder>() {
     override fun onBindViewHolder(holder: ProductSmallViewHolder, position: Int) = holder.bind(items[position])
 }
 
-class ProductSmallViewHolder(private val itemBinding: ItemProductDetailBinding, private val listener: ProductSmallAdapter.OnItemClickListener) : RecyclerView.ViewHolder(itemBinding.root),
+class ProductSmallViewHolder(private val itemBinding: ItemProductSmallBinding, private val listener: ProductSmallAdapter.OnItemClickListener) : RecyclerView.ViewHolder(itemBinding.root),
     View.OnClickListener {
 
     private lateinit var product: Product
@@ -59,7 +60,7 @@ class ProductSmallViewHolder(private val itemBinding: ItemProductDetailBinding, 
             .into(itemBinding.image)
 
         itemBinding.name.text = product.name
-        itemBinding.price.text = product.price.toString()
+        itemBinding.price.text = "$${product.price}"
     }
 
     override fun onClick(v: View?) {
