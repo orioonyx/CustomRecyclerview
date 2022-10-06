@@ -1,7 +1,11 @@
 package com.kyungeun.customrecyclerview.ui.home
 
+import android.os.Build
 import android.os.Bundle
 import android.view.Gravity
+import android.view.View
+import android.view.WindowInsets
+import android.view.WindowInsetsController
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +15,7 @@ import com.kyungeun.customrecyclerview.databinding.ActivityHomeBinding
 import com.kyungeun.customrecyclerview.util.CenterZoomLayoutManager
 import com.kyungeun.customrecyclerview.util.GravitySnapHelper
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity(), MainBannerAdapter.BannerItemListener,

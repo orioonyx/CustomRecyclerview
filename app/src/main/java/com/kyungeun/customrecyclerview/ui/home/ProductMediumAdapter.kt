@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kyungeun.customrecyclerview.data.entity.Product
-import com.kyungeun.customrecyclerview.databinding.ItemProductDetailBinding
 import com.kyungeun.customrecyclerview.databinding.ItemProductMediumBinding
 
 class ProductMediumAdapter() : RecyclerView.Adapter<ProductMediumViewHolder>() {

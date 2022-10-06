@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="50dp"
             android:layout_marginBottom="20dp"
             android:text="Recyclerview Custom"
             android:textSize="20sp" />
@@ -27,7 +27,9 @@
             android:layout_margin="10dp"
             android:onClick="@{() -> activity.onBannerClick()}"
             android:text="Center Zoom and Sensitive Swipe"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/gray"/>
 
         <Button
             android:layout_width="match_parent"
@@ -35,7 +37,9 @@
             android:layout_margin="10dp"
             android:onClick="@{() -> activity.onhomeClick()}"
             android:text="Multiple Recyclerview Scroll"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/gray"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </layout>

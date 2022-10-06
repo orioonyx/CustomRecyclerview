@@ -99,9 +99,7 @@ class ProductAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
 
-    inner class SmallProductViewHolder(
-        private val itemBinding: ItemProductSmallTypeBinding
-    ) :
+    inner class SmallProductViewHolder(private val itemBinding: ItemProductSmallTypeBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
 
         private lateinit var products: ProductList
@@ -131,9 +129,7 @@ class ProductAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    inner class MediumProductViewHolder(
-        private val itemBinding: ItemProductMediumTypeBinding
-    ) :
+    inner class MediumProductViewHolder(private val itemBinding: ItemProductMediumTypeBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
 
         private lateinit var products: ProductList
@@ -170,7 +166,8 @@ class ProductAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             itemBinding.title.text = products.title
 
             val recyclerview = itemBinding.recyclerviewProductLarge
-            recyclerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            recyclerview.layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             val adapter = ProductLargeAdapter()
             recyclerview.adapter = adapter
             adapter.setItems(products.productArray)
