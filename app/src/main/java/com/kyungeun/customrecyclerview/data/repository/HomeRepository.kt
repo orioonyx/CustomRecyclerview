@@ -55,6 +55,20 @@ class HomeRepository @Inject constructor() {
         product3.add(Product(0, R.drawable.product13, "abcde", 65.00))
         data.add(ProductList(0, 2, "Sale Items", product3))
 
+        val product32 = ArrayList<Product>()
+        product32.add(Product(0, R.drawable.product10, "abcde", 12.00))
+        product32.add(Product(0, R.drawable.product11, "abcde", 25.00))
+        product32.add(Product(0, R.drawable.product12, "abcde", 36.00))
+        product32.add(Product(0, R.drawable.product13, "abcde", 65.00))
+        data.add(ProductList(0, 2, "Sale Items", product32))
+
+        val product31 = ArrayList<Product>()
+        product31.add(Product(0, R.drawable.product10, "abcde", 12.00))
+        product31.add(Product(0, R.drawable.product11, "abcde", 25.00))
+        product31.add(Product(0, R.drawable.product12, "abcde", 36.00))
+        product31.add(Product(0, R.drawable.product13, "abcde", 65.00))
+        data.add(ProductList(0, 2, "Sale Items", product31))
+
         val product4 = ArrayList<Product>()
         product4.add(Product(0, R.drawable.jordan, "abcde", 99.00))
         data.add(ProductList(0, 3, "Nike Jordan", product4))

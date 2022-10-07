@@ -44,7 +44,7 @@ class HomeActivity : AppCompatActivity(), MainBannerAdapter.BannerItemListener,
         binding.recyclerviewMainBanner.adapter = mainBannerAdapter
 
         val mainbannerSnapHelper = GravitySnapHelper(Gravity.CENTER)
-        mainbannerSnapHelper.scrollMsPerInch = 25f
+        mainbannerSnapHelper.setScrollMsPerInch(25f)
         mainbannerSnapHelper.attachToRecyclerView(binding.recyclerviewMainBanner)
 
         eventBannerAdapter = EventBannerAdapter(this)
@@ -53,7 +53,7 @@ class HomeActivity : AppCompatActivity(), MainBannerAdapter.BannerItemListener,
         binding.recyclerviewEventBanner.adapter = eventBannerAdapter
 
         val eventbannerSnapHelper = GravitySnapHelper(Gravity.CENTER)
-        eventbannerSnapHelper.scrollMsPerInch = 25f
+        eventbannerSnapHelper.setScrollMsPerInch(25f)
         eventbannerSnapHelper.attachToRecyclerView(binding.recyclerviewEventBanner)
 
         productAdapter = ProductAdapter()
