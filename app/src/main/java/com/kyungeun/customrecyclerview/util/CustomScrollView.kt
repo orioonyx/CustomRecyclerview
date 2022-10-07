@@ -3,12 +3,8 @@ package com.kyungeun.customrecyclerview.util
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
-import android.widget.OverScroller
-import androidx.core.view.ViewCompat
 import androidx.core.widget.NestedScrollView
-import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
 
 class CustomScrollView(context: Context, attrs: AttributeSet?) : NestedScrollView(context, attrs) {
@@ -29,7 +25,6 @@ class CustomScrollView(context: Context, attrs: AttributeSet?) : NestedScrollVie
 
     @SuppressLint("Recycle")
     override fun onInterceptTouchEvent(e: MotionEvent): Boolean {
-        Log.e("onInterceptTouchEvent", "e ${e.action}")
         if (super.onInterceptTouchEvent(e)) {
             if (e.action == MotionEvent.ACTION_DOWN) {
                 if (inChild(e.x.toInt(), e.y.toInt())) {
@@ -51,7 +46,7 @@ class CustomScrollView(context: Context, attrs: AttributeSet?) : NestedScrollVie
                 if (dx < 1 || dy < 1) {
                     return false
                 }
-                if(dy > dx && scrolling) {
+                if (dy > dx && scrolling) {
                     return false
                 }
                 if (dx > dy) {

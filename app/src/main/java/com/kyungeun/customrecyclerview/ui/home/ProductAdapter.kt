@@ -12,6 +12,7 @@ import com.kyungeun.customrecyclerview.databinding.ItemProductLargeTypeBinding
 import com.kyungeun.customrecyclerview.databinding.ItemProductMediumTypeBinding
 import com.kyungeun.customrecyclerview.databinding.ItemProductSmallTypeBinding
 
+//Includes 3 item types
 class ProductAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private lateinit var context: Context

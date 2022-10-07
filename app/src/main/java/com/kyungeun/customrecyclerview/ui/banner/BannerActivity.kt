@@ -29,7 +29,7 @@ class BannerActivity : AppCompatActivity(), BannerAdapter.BannerItemListener {
 
     private fun setupRecyclerView() {
         adapter = BannerAdapter(this)
-        binding.recyclerviewBanner.layoutManager = CenterZoomLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerviewBanner.layoutManager = CenterZoomLayoutManager(this, LinearLayoutManager.HORIZONTAL, false,  0.1f)
         binding.recyclerviewBanner.isNestedScrollingEnabled = false
         binding.recyclerviewBanner.adapter = adapter
 
@@ -37,12 +37,12 @@ class BannerActivity : AppCompatActivity(), BannerAdapter.BannerItemListener {
         val snapHelper = GravitySnapHelper(Gravity.CENTER)
         snapHelper.setScrollMsPerInch(25f) //scroll speed
         snapHelper.attachToRecyclerView(binding.recyclerviewBanner)
-
     }
 
     private fun setupObservers() {
         viewModel.bannerList.observe(this) {
             adapter.setItems(it as ArrayList<Banner>)
+            binding.recyclerviewBanner.smoothScrollToPosition(1)
         }
     }
 

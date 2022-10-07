@@ -10,15 +10,16 @@ import androidx.recyclerview.widget.RecyclerView.Recycler
 
 class CenterZoomLayoutManager : LinearLayoutManager {
 
-    private val mShrinkAmount = 0.05f
+    private var mShrinkAmount = 0.1f
     private val mShrinkDistance = 0.9f
 
     constructor(context: Context?) : super(context) {}
-    constructor(context: Context?, orientation: Int, reverseLayout: Boolean) : super(
+    constructor(context: Context?, orientation: Int, reverseLayout: Boolean, shrinkAmount: Float) : super(
         context,
         orientation,
         reverseLayout
     ) {
+        mShrinkAmount = shrinkAmount
     }
 
     override fun scrollVerticallyBy(dy: Int, recycler: Recycler, state: RecyclerView.State): Int {

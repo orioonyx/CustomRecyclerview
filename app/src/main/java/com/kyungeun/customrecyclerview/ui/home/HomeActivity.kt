@@ -1,18 +1,13 @@
 package com.kyungeun.customrecyclerview.ui.home
 
-import android.os.Build
 import android.os.Bundle
 import android.view.Gravity
-import android.view.View
-import android.view.WindowInsets
-import android.view.WindowInsetsController
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kyungeun.customrecyclerview.data.entity.Banner
 import com.kyungeun.customrecyclerview.data.entity.ProductList
 import com.kyungeun.customrecyclerview.databinding.ActivityHomeBinding
-import com.kyungeun.customrecyclerview.util.CenterZoomLayoutManager
 import com.kyungeun.customrecyclerview.util.GravitySnapHelper
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -48,7 +43,7 @@ class HomeActivity : AppCompatActivity(), MainBannerAdapter.BannerItemListener,
         mainbannerSnapHelper.attachToRecyclerView(binding.recyclerviewMainBanner)
 
         eventBannerAdapter = EventBannerAdapter(this)
-        binding.recyclerviewEventBanner.layoutManager = CenterZoomLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerviewEventBanner.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerviewEventBanner.isNestedScrollingEnabled = false
         binding.recyclerviewEventBanner.adapter = eventBannerAdapter
 
