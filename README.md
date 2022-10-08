@@ -2,15 +2,14 @@
 
 A simple demo project based on RecyclerView.
 
-1. Center Zoom RecyclerView
-Used **CenterZoomLayoutManager** class and **GravitySnapHelper** class.
-2. Multiple RecyclerView
+1. Center Zoom RecyclerView<br/>
+Used **CenterZoomLayoutManager** class and **GravitySnapHelper** class.<br/>
+2. Multiple RecyclerView<br/>
 RecyclerView contains recyclerview.
 Used **CustomScrollView** class.
-
  
 # Demo
-![](./image/drink.png)
+
  
  
 Developed By
