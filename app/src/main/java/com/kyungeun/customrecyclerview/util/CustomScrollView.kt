@@ -25,17 +25,7 @@ class CustomScrollView(context: Context, attrs: AttributeSet?) : NestedScrollVie
 
     @SuppressLint("Recycle")
     override fun onInterceptTouchEvent(e: MotionEvent): Boolean {
-        if (super.onInterceptTouchEvent(e)) {
-            if (e.action == MotionEvent.ACTION_DOWN) {
-                if (inChild(e.x.toInt(), e.y.toInt())) {
-                    scrolling = false
-                }
-                if (scrolling) {
-                    return false
-                }
-                return true
-            }
-        }
+
 
         when (e.actionMasked) {
             MotionEvent.ACTION_MOVE -> {
@@ -43,14 +33,10 @@ class CustomScrollView(context: Context, attrs: AttributeSet?) : NestedScrollVie
                 val currentY = e.y
                 val dx: Float = abs(currentX - lastX)
                 val dy: Float = abs(currentY - lastY)
-                if (dx < 1 || dy < 1) {
+                if (dx < 3 || dy < 3) {
                     return false
                 }
-                if (dy > dx && scrolling) {
-                    return false
-                }
-                if (dx > dy) {
-                    scrolling = true
+                if(scrolling) {
                     return false
                 }
                 return dy > dx
@@ -69,10 +55,12 @@ class CustomScrollView(context: Context, attrs: AttributeSet?) : NestedScrollVie
                 }
             }
             MotionEvent.ACTION_UP -> {
+                if(scrolling) {
+                    scrolling = false
+                }
                 return false
             }
             MotionEvent.ACTION_HOVER_MOVE -> {
-                return false
             }
             MotionEvent.ACTION_CANCEL -> {
             }
