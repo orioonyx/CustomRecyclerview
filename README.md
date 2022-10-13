@@ -1,6 +1,7 @@
 # Android Custom RecyclerView
 
-A simple demo project based on RecyclerView.<br/><br/>
+A simple demo project based on RecyclerView.<br/>
+Customizing Recycler Views.<br/><br/>
 
 ### 1. Center Zoom RecyclerView<br/>
 * Used **CenterZoomLayoutManager** class and **GravitySnapHelper** class.<br/><br/>
