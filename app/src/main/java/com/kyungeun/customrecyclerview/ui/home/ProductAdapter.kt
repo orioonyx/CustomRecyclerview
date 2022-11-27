@@ -4,43 +4,27 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.widget.Toast
+import androidx.recyclerview.widget.*
 import com.kyungeun.customrecyclerview.data.entity.ProductList
 import com.kyungeun.customrecyclerview.databinding.ItemProductLargeTypeBinding
 import com.kyungeun.customrecyclerview.databinding.ItemProductMediumTypeBinding
 import com.kyungeun.customrecyclerview.databinding.ItemProductSmallTypeBinding
 
-//Includes 3 item types
-class ProductAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
+/**
+ * Includes 3 item types
+ * Used ListAdapter to compare items
+ */
+class ProductAdapter() : ListAdapter<ProductList, RecyclerView.ViewHolder>(diffUtil) {
     private lateinit var context: Context
-
-    lateinit var mListener: OnItemClickListener
-
-    interface OnItemClickListener {
-    }
-
-//    fun setOnItemClickListener(listener: ProductAdapter.OnItemClickListener) {
-//        mListener = listener
-//    }
 
     //컨텐츠 뷰타입
     private val VIEW_TYPE_SMALL = 1
     private val VIEW_TYPE_MEDIUM = 2
     private val VIEW_TYPE_LARGE = 3
 
-    private val items = ArrayList<ProductList>()
-
-    fun setItems(items: ArrayList<ProductList>) {
-        this.items.clear()
-        this.items.addAll(items)
-        notifyDataSetChanged()
-    }
-
     override fun getItemViewType(position: Int): Int {
-        return when (items[position].type) {
+        return when (getItem(position).type) {
             1 -> {
                 VIEW_TYPE_SMALL
             }
@@ -83,31 +67,27 @@ class ProductAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = currentList.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (holder) {
-            is SmallProductViewHolder -> {
-                holder.bind(items[position])
+        val current = getItem(position)
+        when (holder.itemViewType) {
+            VIEW_TYPE_SMALL -> {
+                (holder as SmallProductViewHolder).bind(current)
             }
-            is MediumProductViewHolder -> {
-                holder.bind(items[position])
+            VIEW_TYPE_MEDIUM -> {
+                (holder as MediumProductViewHolder).bind(current)
             }
-            is LargeProductViewHolder -> {
-                holder.bind(items[position])
+            VIEW_TYPE_LARGE -> {
+                (holder as LargeProductViewHolder).bind(current)
             }
         }
     }
-
 
     inner class SmallProductViewHolder(private val itemBinding: ItemProductSmallTypeBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
 
         private lateinit var products: ProductList
-
-        init {
-            //itemBinding.root.setOnClickListener(this)
-        }
 
         @SuppressLint("SetTextI18n")
         fun bind(items: ProductList) {
@@ -123,7 +103,7 @@ class ProductAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
             adapter.setOnItemClickListener(object : ProductSmallAdapter.OnItemClickListener {
                 override fun onProductSmallItemClicked(id: Int) {
-
+                    Toast.makeText(context, "Small Item Click!", Toast.LENGTH_SHORT).show()
                 }
             })
 
@@ -149,7 +129,7 @@ class ProductAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
             adapter.setOnItemClickListener(object : ProductMediumAdapter.OnItemClickListener {
                 override fun onProductMediumItemClicked(id: Int) {
-
+                    Toast.makeText(context, "Medium Item Click!", Toast.LENGTH_SHORT).show()
                 }
             })
 
@@ -175,11 +155,22 @@ class ProductAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
             adapter.setOnItemClickListener(object : ProductLargeAdapter.OnItemClickListener {
                 override fun onProductLargeItemClicked(id: Int) {
-
+                    Toast.makeText(context, "Large Item Click!", Toast.LENGTH_SHORT).show()
                 }
             })
 
         }
     }
 
+    companion object {
+        val diffUtil = object : DiffUtil.ItemCallback<ProductList>() {
+            override fun areItemsTheSame(oldItem: ProductList, newItem: ProductList): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: ProductList, newItem: ProductList): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 }

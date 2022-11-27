@@ -65,7 +65,7 @@ class HomeActivity : AppCompatActivity(), MainBannerAdapter.BannerItemListener,
             eventBannerAdapter.setItems(it as ArrayList<Banner>)
         }
         viewModel.productList.observe(this) {
-            productAdapter.setItems(it as ArrayList<ProductList>)
+            productAdapter.submitList(it as ArrayList<ProductList>)
         }
     }
 
