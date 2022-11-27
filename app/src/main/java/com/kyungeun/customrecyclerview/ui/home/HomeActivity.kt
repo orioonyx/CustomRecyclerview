@@ -58,10 +58,10 @@ class HomeActivity : AppCompatActivity(), MainBannerAdapter.BannerItemListener,
     }
 
     private fun setupObservers() {
-        viewModel.mainbannerList.observe(this) {
+        viewModel.mainBannerList.observe(this) {
             mainBannerAdapter.setItems(it as ArrayList<Banner>)
         }
-        viewModel.eventbannerList.observe(this) {
+        viewModel.eventBannerList.observe(this) {
             eventBannerAdapter.setItems(it as ArrayList<Banner>)
         }
         viewModel.productList.observe(this) {

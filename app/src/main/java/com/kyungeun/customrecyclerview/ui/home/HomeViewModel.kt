@@ -13,7 +13,7 @@ class HomeViewModel @Inject constructor(
     private val homeRepository: HomeRepository
 ) : ViewModel() {
 
-    val mainbannerList : MutableLiveData<List<Banner>> = homeRepository.getMainBannerList()
-    val eventbannerList : MutableLiveData<List<Banner>> = homeRepository.getEventBannerList()
+    val mainBannerList : MutableLiveData<List<Banner>> = homeRepository.getMainBannerList()
+    val eventBannerList : MutableLiveData<List<Banner>> = homeRepository.getEventBannerList()
     val productList : MutableLiveData<List<ProductList>> = homeRepository.getProductList()
 }

@@ -67,8 +67,6 @@ class ProductAdapter() : ListAdapter<ProductList, RecyclerView.ViewHolder>(diffU
         }
     }
 
-    override fun getItemCount(): Int = currentList.size
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val current = getItem(position)
         when (holder.itemViewType) {
@@ -164,12 +162,11 @@ class ProductAdapter() : ListAdapter<ProductList, RecyclerView.ViewHolder>(diffU
 
     companion object {
         val diffUtil = object : DiffUtil.ItemCallback<ProductList>() {
-            override fun areItemsTheSame(oldItem: ProductList, newItem: ProductList): Boolean {
-                return oldItem.id == newItem.id
-            }
-
             override fun areContentsTheSame(oldItem: ProductList, newItem: ProductList): Boolean {
                 return oldItem == newItem
+            }
+            override fun areItemsTheSame(oldItem: ProductList, newItem: ProductList): Boolean {
+                return oldItem.id == newItem.id
             }
         }
     }
