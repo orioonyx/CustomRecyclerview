@@ -19,20 +19,20 @@ class ProductAdapter() : ListAdapter<ProductList, RecyclerView.ViewHolder>(diffU
     private lateinit var context: Context
 
     //컨텐츠 뷰타입
-    private val VIEW_TYPE_SMALL = 1
-    private val VIEW_TYPE_MEDIUM = 2
-    private val VIEW_TYPE_LARGE = 3
+    private val viewTypeSmall = 1
+    private val viewTypeMedium = 2
+    private val viewTypeLarge = 3
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position).type) {
             1 -> {
-                VIEW_TYPE_SMALL
+                viewTypeSmall
             }
             2 -> {
-                VIEW_TYPE_MEDIUM
+                viewTypeMedium
             }
             else -> {
-                VIEW_TYPE_LARGE
+                viewTypeLarge
             }
         }
     }
@@ -70,13 +70,13 @@ class ProductAdapter() : ListAdapter<ProductList, RecyclerView.ViewHolder>(diffU
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val current = getItem(position)
         when (holder.itemViewType) {
-            VIEW_TYPE_SMALL -> {
+            viewTypeSmall -> {
                 (holder as SmallProductViewHolder).bind(current)
             }
-            VIEW_TYPE_MEDIUM -> {
+            viewTypeMedium -> {
                 (holder as MediumProductViewHolder).bind(current)
             }
-            VIEW_TYPE_LARGE -> {
+            viewTypeLarge -> {
                 (holder as LargeProductViewHolder).bind(current)
             }
         }
