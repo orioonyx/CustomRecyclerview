@@ -9,6 +9,8 @@ import kotlin.math.abs
 /**
  * A RecyclerView that only handles scroll events with the same orientation of its LayoutManager.
  * Avoids situations where nested recyclerviews don't receive touch events properly:
+ *
+ * Used in RecycleView of xml
  */
 class OrientationAwareRecyclerView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,
@@ -49,7 +51,12 @@ class OrientationAwareRecyclerView @JvmOverloads constructor(
                 val currentY = e.y
                 val dx = abs(currentX - lastX)
                 val dy = abs(currentY - lastY)
+
                 allowScroll = if (dy > dx) lm.canScrollVertically() else lm.canScrollHorizontally()
+            }
+            MotionEvent.ACTION_UP -> {
+            }
+            MotionEvent.ACTION_CANCEL -> {
             }
         }
         return if (!allowScroll) {

@@ -96,8 +96,11 @@ class ProductParentAdapter() : ListAdapter<ProductList, RecyclerView.ViewHolder>
 
             recyclerview.setRecycledViewPool(viewPool)
 
-            recyclerview.layoutManager =
+            val layoutManager =
                 GridLayoutManager(context, 2, GridLayoutManager.HORIZONTAL, false)
+            layoutManager.initialPrefetchItemCount = 6 // Preload items
+            recyclerview.layoutManager = layoutManager
+
             val adapter = ProductChildAdapter()
             recyclerview.adapter = adapter
             adapter.setItemWidth(dpToPx(150f))
@@ -124,8 +127,11 @@ class ProductParentAdapter() : ListAdapter<ProductList, RecyclerView.ViewHolder>
 
             recyclerview.setRecycledViewPool(viewPool)
 
-            recyclerview.layoutManager =
+            val layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager.initialPrefetchItemCount = 4 // Preload items
+            recyclerview.layoutManager = layoutManager
+
             val adapter = ProductChildAdapter()
             recyclerview.adapter = adapter
             adapter.setItemWidth(dpToPx(180f))
@@ -152,8 +158,11 @@ class ProductParentAdapter() : ListAdapter<ProductList, RecyclerView.ViewHolder>
 
             recyclerview.setRecycledViewPool(viewPool)
 
-            recyclerview.layoutManager =
+            val layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager.initialPrefetchItemCount = 1 // Preload items
+            recyclerview.layoutManager = layoutManager
+
             val adapter = ProductChildAdapter()
             recyclerview.adapter = adapter
             adapter.setItems(products.productArray)

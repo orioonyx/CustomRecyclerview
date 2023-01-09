@@ -33,6 +33,7 @@ class HomeActivity : AppCompatActivity(), MainBannerAdapter.BannerItemListener,
     }
 
     private fun setupRecyclerView() {
+        // Main Banner
         mainBannerAdapter = MainBannerAdapter(this)
         binding.recyclerviewMainBanner.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerviewMainBanner.isNestedScrollingEnabled = false
@@ -42,6 +43,7 @@ class HomeActivity : AppCompatActivity(), MainBannerAdapter.BannerItemListener,
         mainbannerSnapHelper.setScrollMsPerInch(25f)
         mainbannerSnapHelper.attachToRecyclerView(binding.recyclerviewMainBanner)
 
+        // Event Banner
         eventBannerAdapter = EventBannerAdapter(this)
         binding.recyclerviewEventBanner.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerviewEventBanner.isNestedScrollingEnabled = false
@@ -51,7 +53,7 @@ class HomeActivity : AppCompatActivity(), MainBannerAdapter.BannerItemListener,
         eventbannerSnapHelper.setScrollMsPerInch(25f)
         eventbannerSnapHelper.attachToRecyclerView(binding.recyclerviewEventBanner)
 
-        //Nested RecyclerView
+        // Product : Nested RecyclerView
         productAdapter = ProductParentAdapter()
         binding.recyclerviewProduct.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.recyclerviewProduct.isNestedScrollingEnabled = false
