@@ -6,7 +6,6 @@ import android.view.MotionEvent
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
 
-
 /**
  * A RecyclerView that only handles scroll events with the same orientation of its LayoutManager.
  * Avoids situations where nested recyclerviews don't receive touch events properly:
@@ -44,7 +43,6 @@ class OrientationAwareRecyclerView @JvmOverloads constructor(
                 }
             }
             MotionEvent.ACTION_MOVE -> {
-
                 // We're moving, so check if we're trying
                 // to scroll vertically or horizontally so we don't intercept the wrong event.
                 val currentX = e.x
