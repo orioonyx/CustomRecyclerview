@@ -7,6 +7,9 @@ import android.view.MotionEvent
 import androidx.core.widget.NestedScrollView
 import kotlin.math.abs
 
+/**
+ * Custom NestedScrollView for RecyclerView
+ */
 class CustomScrollView(context: Context, attrs: AttributeSet?) : NestedScrollView(context, attrs) {
 
     private var lastX = 0.0f

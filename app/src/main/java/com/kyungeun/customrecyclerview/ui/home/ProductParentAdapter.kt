@@ -4,7 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.recyclerview.widget.*
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.kyungeun.customrecyclerview.data.entity.Product
 import com.kyungeun.customrecyclerview.data.entity.ProductList
 import com.kyungeun.customrecyclerview.databinding.ItemProductParentBinding
@@ -17,7 +21,13 @@ import com.kyungeun.customrecyclerview.databinding.ItemProductParentBinding
 class ProductParentAdapter() : ListAdapter<ProductList, RecyclerView.ViewHolder>(diffUtil) {
     private lateinit var context: Context
 
-    //viewType
+    /**
+     * Optimize the scrolling performance of the Nested RecyclerView using the setRecycledViewPool.
+     * - The RecyclerView will use the same pool for all the nested RecyclerViews.
+     */
+    private val viewPool = RecyclerView.RecycledViewPool()
+
+    // viewType
     private val viewTypeSmall = 1
     private val viewTypeMedium = 2
     private val viewTypeLarge = 3
@@ -83,6 +93,9 @@ class ProductParentAdapter() : ListAdapter<ProductList, RecyclerView.ViewHolder>
             itemBinding.title.text = products.title
 
             val recyclerview = itemBinding.recyclerviewProductChild
+
+            recyclerview.setRecycledViewPool(viewPool)
+
             recyclerview.layoutManager =
                 GridLayoutManager(context, 2, GridLayoutManager.HORIZONTAL, false)
             val adapter = ProductChildAdapter()
@@ -108,6 +121,9 @@ class ProductParentAdapter() : ListAdapter<ProductList, RecyclerView.ViewHolder>
             itemBinding.title.text = products.title
 
             val recyclerview = itemBinding.recyclerviewProductChild
+
+            recyclerview.setRecycledViewPool(viewPool)
+
             recyclerview.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             val adapter = ProductChildAdapter()
@@ -133,6 +149,9 @@ class ProductParentAdapter() : ListAdapter<ProductList, RecyclerView.ViewHolder>
             itemBinding.title.text = products.title
 
             val recyclerview = itemBinding.recyclerviewProductChild
+
+            recyclerview.setRecycledViewPool(viewPool)
+
             recyclerview.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             val adapter = ProductChildAdapter()

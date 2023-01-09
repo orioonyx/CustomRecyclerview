@@ -5,40 +5,35 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeActivity">
 
-<!--    <androidx.core.widget.NestedScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:fillViewport="true"-->
-<!--        android:scrollbars="none">-->
-
-    <com.kyungeun.customrecyclerview.util.CustomScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
         android:scrollbars="none">
+
         <LinearLayout
             android:id="@+id/layout_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.kyungeun.customrecyclerview.util.OrientationAwareRecyclerView
                 android:id="@+id/recyclerview_main_banner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.kyungeun.customrecyclerview.util.OrientationAwareRecyclerView
                 android:id="@+id/recyclerview_event_banner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"/>
+                android:layout_marginTop="30dp" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.kyungeun.customrecyclerview.util.OrientationAwareRecyclerView
                 android:id="@+id/recyclerview_product"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"/>
+                android:layout_marginTop="30dp" />
 
         </LinearLayout>
-    </com.kyungeun.customrecyclerview.util.CustomScrollView>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

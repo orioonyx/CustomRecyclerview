@@ -11,6 +11,10 @@ import com.kyungeun.customrecyclerview.databinding.ItemProductChildBinding
 
 class ProductChildAdapter() : RecyclerView.Adapter<ProductChildViewHolder>() {
 
+    private val items = ArrayList<Product>()
+
+    private var itemWidth = 0
+
     lateinit var mListener : OnItemClickListener
 
     interface OnItemClickListener {
@@ -20,10 +24,6 @@ class ProductChildAdapter() : RecyclerView.Adapter<ProductChildViewHolder>() {
     fun setOnItemClickListener(listener: OnItemClickListener) {
         mListener = listener
     }
-
-    private val items = ArrayList<Product>()
-
-    private var itemWidth = 0
 
     @SuppressLint("NotifyDataSetChanged")
     fun setItems(items: ArrayList<Product>) {
