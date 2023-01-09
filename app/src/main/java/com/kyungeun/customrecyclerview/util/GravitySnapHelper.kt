@@ -18,8 +18,8 @@ class GravitySnapHelper @JvmOverloads constructor(
     snapListener: SnapListener? = null
 ) :
     LinearSnapHelper() {
-    val FLING_DISTANCE_DISABLE = -1
-    val FLING_SIZE_FRACTION_DISABLE = -1f
+    private val FLING_DISTANCE_DISABLE = -1
+    private val FLING_SIZE_FRACTION_DISABLE = -1f
     private var gravity = 0
     private var isRtl = false
     private var snapLastItem = false

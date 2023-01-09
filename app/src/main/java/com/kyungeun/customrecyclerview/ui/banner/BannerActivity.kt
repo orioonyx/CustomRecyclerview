@@ -42,7 +42,7 @@ class BannerActivity : AppCompatActivity(), BannerAdapter.BannerItemListener {
     private fun setupObservers() {
         viewModel.bannerList.observe(this) {
             adapter.setItems(it as ArrayList<Banner>)
-            binding.recyclerviewBanner.smoothScrollToPosition(1)
+            binding.recyclerviewBanner.smoothScrollToPosition(it.size)
         }
     }
 

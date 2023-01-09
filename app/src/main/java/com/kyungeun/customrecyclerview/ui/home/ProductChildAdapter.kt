@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kyungeun.customrecyclerview.data.entity.Product
-import com.kyungeun.customrecyclerview.databinding.ItemProductSmallBinding
+import com.kyungeun.customrecyclerview.databinding.ItemProductChildBinding
 
-class ProductSmallAdapter() : RecyclerView.Adapter<ProductSmallViewHolder>() {
+class ProductChildAdapter() : RecyclerView.Adapter<ProductChildViewHolder>() {
 
     lateinit var mListener : OnItemClickListener
 
     interface OnItemClickListener {
-        fun onProductSmallItemClicked(id: Int)
+        fun onProductChildItemClicked(product: Product)
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
@@ -23,23 +23,39 @@ class ProductSmallAdapter() : RecyclerView.Adapter<ProductSmallViewHolder>() {
 
     private val items = ArrayList<Product>()
 
+    private var itemWidth = 0
+
+    @SuppressLint("NotifyDataSetChanged")
     fun setItems(items: ArrayList<Product>) {
         this.items.clear()
         this.items.addAll(items)
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductSmallViewHolder {
-        val binding: ItemProductSmallBinding = ItemProductSmallBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ProductSmallViewHolder(binding, mListener)
+    fun setItemWidth(width: Int) {
+        this.itemWidth = width
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductChildViewHolder {
+        val binding: ItemProductChildBinding = ItemProductChildBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ProductChildViewHolder(binding, mListener)
     }
 
     override fun getItemCount(): Int = items.size
 
-    override fun onBindViewHolder(holder: ProductSmallViewHolder, position: Int) = holder.bind(items[position])
+    override fun onBindViewHolder(holder: ProductChildViewHolder, position: Int){
+        holder.bind(items[position])
+
+        // Set item width
+        if(itemWidth != 0) {
+            holder.itemView.layoutParams.width = itemWidth
+        } else {
+            holder.itemView.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+        }
+    }
 }
 
-class ProductSmallViewHolder(private val itemBinding: ItemProductSmallBinding, private val listener: ProductSmallAdapter.OnItemClickListener) : RecyclerView.ViewHolder(itemBinding.root),
+class ProductChildViewHolder(private val itemBinding: ItemProductChildBinding, private val listener: ProductChildAdapter.OnItemClickListener) : RecyclerView.ViewHolder(itemBinding.root),
     View.OnClickListener {
 
     private lateinit var product: Product
@@ -56,6 +72,7 @@ class ProductSmallViewHolder(private val itemBinding: ItemProductSmallBinding, p
             .load(item.image)
             .override(512, 512)
             .dontAnimate()
+            .skipMemoryCache(true)
             .into(itemBinding.image)
 
         itemBinding.name.text = product.name
@@ -63,7 +80,7 @@ class ProductSmallViewHolder(private val itemBinding: ItemProductSmallBinding, p
     }
 
     override fun onClick(v: View?) {
-        listener.onProductSmallItemClicked(product.id)
+        listener.onProductChildItemClicked(product)
     }
 }
 

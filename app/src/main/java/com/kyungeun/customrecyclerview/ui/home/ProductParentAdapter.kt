@@ -1,24 +1,23 @@
 package com.kyungeun.customrecyclerview.ui.home
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.*
+import com.kyungeun.customrecyclerview.data.entity.Product
 import com.kyungeun.customrecyclerview.data.entity.ProductList
-import com.kyungeun.customrecyclerview.databinding.ItemProductLargeTypeBinding
-import com.kyungeun.customrecyclerview.databinding.ItemProductMediumTypeBinding
-import com.kyungeun.customrecyclerview.databinding.ItemProductSmallTypeBinding
+import com.kyungeun.customrecyclerview.databinding.ItemProductParentBinding
 
 /**
- * Includes 3 item types
- * Used ListAdapter to compare items
+ * Nested RecyclerView Adapter
+ * - Includes 3 item types
+ * - Used ListAdapter to compare items
  */
-class ProductAdapter() : ListAdapter<ProductList, RecyclerView.ViewHolder>(diffUtil) {
+class ProductParentAdapter() : ListAdapter<ProductList, RecyclerView.ViewHolder>(diffUtil) {
     private lateinit var context: Context
 
-    //컨텐츠 뷰타입
+    //viewType
     private val viewTypeSmall = 1
     private val viewTypeMedium = 2
     private val viewTypeLarge = 3
@@ -39,30 +38,22 @@ class ProductAdapter() : ListAdapter<ProductList, RecyclerView.ViewHolder>(diffU
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         context = parent.context
-        when (viewType) {
+
+        val binding: ItemProductParentBinding = ItemProductParentBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+
+        return when (viewType) {
             1 -> {
-                val binding: ItemProductSmallTypeBinding = ItemProductSmallTypeBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
-                return SmallProductViewHolder(binding)
+                SmallProductViewHolder(binding)
             }
             2 -> {
-                val binding: ItemProductMediumTypeBinding = ItemProductMediumTypeBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
-                return MediumProductViewHolder(binding)
+                MediumProductViewHolder(binding)
             }
             else -> {
-                val binding: ItemProductLargeTypeBinding = ItemProductLargeTypeBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
-                return LargeProductViewHolder(binding)
+                LargeProductViewHolder(binding)
             }
         }
     }
@@ -82,82 +73,83 @@ class ProductAdapter() : ListAdapter<ProductList, RecyclerView.ViewHolder>(diffU
         }
     }
 
-    inner class SmallProductViewHolder(private val itemBinding: ItemProductSmallTypeBinding) :
+    inner class SmallProductViewHolder(private val itemBinding: ItemProductParentBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
 
         private lateinit var products: ProductList
 
-        @SuppressLint("SetTextI18n")
         fun bind(items: ProductList) {
             this.products = items
             itemBinding.title.text = products.title
 
-            val recyclerview = itemBinding.recyclerviewProductSmall
+            val recyclerview = itemBinding.recyclerviewProductChild
             recyclerview.layoutManager =
                 GridLayoutManager(context, 2, GridLayoutManager.HORIZONTAL, false)
-            val adapter = ProductSmallAdapter()
+            val adapter = ProductChildAdapter()
             recyclerview.adapter = adapter
+            adapter.setItemWidth(dpToPx(150f))
             adapter.setItems(products.productArray)
 
-            adapter.setOnItemClickListener(object : ProductSmallAdapter.OnItemClickListener {
-                override fun onProductSmallItemClicked(id: Int) {
-                    Toast.makeText(context, "Small Item Click!", Toast.LENGTH_SHORT).show()
+            adapter.setOnItemClickListener(object : ProductChildAdapter.OnItemClickListener {
+                override fun onProductChildItemClicked(product: Product) {
+                    Toast.makeText(context, "Clicked ${product.name} $${product.price}", Toast.LENGTH_SHORT).show()
                 }
             })
-
         }
     }
 
-    inner class MediumProductViewHolder(private val itemBinding: ItemProductMediumTypeBinding) :
+    inner class MediumProductViewHolder(private val itemBinding: ItemProductParentBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
 
         private lateinit var products: ProductList
 
-        @SuppressLint("SetTextI18n")
         fun bind(items: ProductList) {
             this.products = items
             itemBinding.title.text = products.title
 
-            val recyclerview = itemBinding.recyclerviewProductMedium
+            val recyclerview = itemBinding.recyclerviewProductChild
             recyclerview.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            val adapter = ProductMediumAdapter()
+            val adapter = ProductChildAdapter()
             recyclerview.adapter = adapter
+            adapter.setItemWidth(dpToPx(180f))
             adapter.setItems(products.productArray)
 
-            adapter.setOnItemClickListener(object : ProductMediumAdapter.OnItemClickListener {
-                override fun onProductMediumItemClicked(id: Int) {
-                    Toast.makeText(context, "Medium Item Click!", Toast.LENGTH_SHORT).show()
+            adapter.setOnItemClickListener(object : ProductChildAdapter.OnItemClickListener {
+                override fun onProductChildItemClicked(product: Product) {
+                    Toast.makeText(context, "Clicked ${product.name} $${product.price}", Toast.LENGTH_SHORT).show()
                 }
             })
-
         }
     }
 
-    inner class LargeProductViewHolder(private val itemBinding: ItemProductLargeTypeBinding) :
+    inner class LargeProductViewHolder(private val itemBinding: ItemProductParentBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
 
         private lateinit var products: ProductList
 
-        @SuppressLint("SetTextI18n")
         fun bind(items: ProductList) {
             this.products = items
             itemBinding.title.text = products.title
 
-            val recyclerview = itemBinding.recyclerviewProductLarge
+            val recyclerview = itemBinding.recyclerviewProductChild
             recyclerview.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            val adapter = ProductLargeAdapter()
+            val adapter = ProductChildAdapter()
             recyclerview.adapter = adapter
             adapter.setItems(products.productArray)
 
-            adapter.setOnItemClickListener(object : ProductLargeAdapter.OnItemClickListener {
-                override fun onProductLargeItemClicked(id: Int) {
-                    Toast.makeText(context, "Large Item Click!", Toast.LENGTH_SHORT).show()
+            adapter.setOnItemClickListener(object : ProductChildAdapter.OnItemClickListener {
+                override fun onProductChildItemClicked(product: Product) {
+                    Toast.makeText(context, "Clicked ${product.name} $${product.price}", Toast.LENGTH_SHORT).show()
                 }
             })
-
         }
+    }
+
+    fun dpToPx(dp: Float): Int {
+        val density = context.resources.displayMetrics.density
+        return (dp * density).toInt()
     }
 
     companion object {
@@ -170,4 +162,6 @@ class ProductAdapter() : ListAdapter<ProductList, RecyclerView.ViewHolder>(diffU
             }
         }
     }
+
+
 }

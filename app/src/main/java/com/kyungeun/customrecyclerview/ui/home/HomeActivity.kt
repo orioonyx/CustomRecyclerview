@@ -21,7 +21,7 @@ class HomeActivity : AppCompatActivity(), MainBannerAdapter.BannerItemListener,
 
     private lateinit var mainBannerAdapter: MainBannerAdapter
     private lateinit var eventBannerAdapter: EventBannerAdapter
-    private lateinit var productAdapter: ProductAdapter
+    private lateinit var productAdapter: ProductParentAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +51,8 @@ class HomeActivity : AppCompatActivity(), MainBannerAdapter.BannerItemListener,
         eventbannerSnapHelper.setScrollMsPerInch(25f)
         eventbannerSnapHelper.attachToRecyclerView(binding.recyclerviewEventBanner)
 
-        productAdapter = ProductAdapter()
+        //Nested RecyclerView
+        productAdapter = ProductParentAdapter()
         binding.recyclerviewProduct.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.recyclerviewProduct.isNestedScrollingEnabled = false
         binding.recyclerviewProduct.adapter = productAdapter

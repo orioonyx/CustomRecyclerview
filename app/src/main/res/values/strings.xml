@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CustomRecyclerview</string>
+    <string name="main_title">Recyclerview Custom</string>
+    <string name="center_zoom_rv">Center Zoom RecyclerView</string>
+    <string name="nested_rv">Nested RecyclerView</string>
+    <string name="product_image">Product Image</string>
 </resources>

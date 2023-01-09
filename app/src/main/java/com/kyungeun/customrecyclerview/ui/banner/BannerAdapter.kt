@@ -17,6 +17,7 @@ class BannerAdapter(private val listener: BannerItemListener) : RecyclerView.Ada
 
     private val items = ArrayList<Banner>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setItems(items: ArrayList<Banner>) {
         this.items.clear()
         this.items.addAll(items)
@@ -28,9 +29,18 @@ class BannerAdapter(private val listener: BannerItemListener) : RecyclerView.Ada
         return BannerViewHolder(binding, listener)
     }
 
-    override fun getItemCount(): Int = items.size
+    // infinite scroll
+    // original code : override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int {
+       return Integer.MAX_VALUE
+    }
 
-    override fun onBindViewHolder(holder: BannerViewHolder, position: Int) = holder.bind(items[position])
+    // infinite scroll
+    // original code : override fun onBindViewHolder(holder: BannerViewHolder, position: Int) = holder.bind(items[position])
+    override fun onBindViewHolder(holder: BannerViewHolder, position: Int) {
+       val realPosition = position % items.size
+        return holder.bind(items[realPosition])
+    }
 }
 
 class BannerViewHolder(private val itemBinding: ItemBannerBinding, private val listener: BannerAdapter.BannerItemListener) : RecyclerView.ViewHolder(itemBinding.root),
